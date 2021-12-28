@@ -8,15 +8,18 @@ class RadioTest {
 
 
     @Test
-    void shouldNumberRadiostationChanging() {
+    void shouldSetNumberRadiostationChanging() {
         Radio rad = new Radio();
-        assertEquals(6, rad.NumberRadiostationChanging(6));
+        rad.setNumberRadiostationChaning(12);
+        int actual = rad.getCurrentRadioStation();
+        assertEquals(0, actual);
     }
 
     @Test
     void shoruldSelectingTheWrongRadioStationNumbe() {
         Radio rad = new Radio();
-        rad.SetTheRadioChannelToIndicateItsNumber(12);
+        rad.setCurrentRadioStation(-1);
+        rad.selectingTheWrongRadioStationNumber();
         assertEquals(0, rad.getCurrentRadioStation());
     }
 
@@ -52,19 +55,13 @@ class RadioTest {
         assertEquals(4, rad.getCurrentRadioStation());
     }
 
-    @Test
-    void shouldSetTheRadioChannelToIndicateItsNumber() {
-        Radio rad = new Radio();
-        rad.SetTheRadioChannelToIndicateItsNumber(7);
-        assertEquals(7, rad.getCurrentRadioStation());
-    }
 
     @Test
     void shouldIincreaseTheVolumeByOneStep() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(5);
-        rad.increaseVolume();
-        assertEquals(6, rad.getCurrentVolume());
+        rad.setCurrentVolume(10);
+        rad.IncreaseVolume();
+        assertEquals(1, rad.getCurrentVolume());
     }
 
     @Test
@@ -92,5 +89,11 @@ class RadioTest {
         assertEquals(0, rad.getCurrentVolume());
     }
 
+    @Test
+    void shouldSetTheRadioChannelToIndicateItsNumber() {
+        Radio rad = new Radio();
+        rad.setNumberRadiostationChaning(1);
+        assertEquals(1, rad.getCurrentRadioStation());
 
+    }
 }

@@ -2,35 +2,29 @@ package ru.netology.domain;
 
 public class Radio {
     private int currentVolume;
-    int maxVolume = 10;
-    int minVolume = 0;
+    private int maxVolume = 10;
+    private int minVolume = 0;
 
     private int currentRadioStation;
-    int maxRadioStation = 9;
-    int minRadioStation = 0;
-    int selectedRadioChannel;
+    private int maxRadioStation = 9;
+    private int minRadioStation = 0;
 
 
-    public int NumberRadiostationChanging(int selectedRadioChannel) {
-        if (selectedRadioChannel <= maxRadioStation && selectedRadioChannel >= minRadioStation) {
-            currentRadioStation = selectedRadioChannel;
-
+    public void setNumberRadiostationChaning(int currentRadioStation) {
+        if (currentRadioStation > maxRadioStation || currentRadioStation < minRadioStation) {
+            return;
         }
-
-        return currentRadioStation;
+        this.currentRadioStation = currentRadioStation;
     }
 
     public void selectingTheWrongRadioStationNumber() {
-        if (currentRadioStation == maxRadioStation) {
+        if (currentRadioStation >= maxRadioStation) {
             currentRadioStation = 0;
 
         } else {
             currentRadioStation += 1;
-
         }
-
     }
-
 
     public void changeTheStationByPrevButton() {
         if (currentRadioStation == minRadioStation) {
@@ -43,29 +37,22 @@ public class Radio {
 
     }
 
-
-    public void increaseVolume() {
+    public void IncreaseVolume() {
         if (currentVolume == maxVolume) {
-            return;
-
-        } else {
-            currentVolume += 1;
-
+            currentVolume = 0;
         }
 
+        currentVolume++;
     }
 
-
     public void decreaseVolume() {
-        if (currentVolume == minVolume) {
-            return;
+        if (currentVolume <= minVolume) {
+            currentVolume = 0;
 
         } else {
             currentVolume -= 1;
 
-
         }
-
     }
 
     public int getCurrentVolume() {
@@ -84,25 +71,15 @@ public class Radio {
 
     }
 
-
     public void setCurrentRadioStation(int currentRadioStation) {
         this.currentRadioStation = currentRadioStation;
-
     }
-
-    public void SetTheRadioChannelToIndicateItsNumber(int selectedRadioChannel) {
-        this.selectedRadioChannel = currentRadioStation;
-
-        if (selectedRadioChannel <= maxRadioStation && selectedRadioChannel >= minRadioStation) {
-
-            currentRadioStation = selectedRadioChannel;
-        } else if (selectedRadioChannel == currentRadioStation) {
-            return;
-        }
-
-    }
-
 }
+
+
+
+
+
 
 
 
