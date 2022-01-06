@@ -10,13 +10,6 @@ public class Radio {
     private int minRadioStation = 0;
 
 
-    public void setNumberRadiostationChaning(int currentRadioStation) {
-        if (currentRadioStation > maxRadioStation || currentRadioStation < minRadioStation) {
-            return;
-        }
-        this.currentRadioStation = currentRadioStation;
-    }
-
     public void selectingTheWrongRadioStationNumber() {
         if (currentRadioStation >= maxRadioStation) {
             currentRadioStation = 0;
@@ -28,7 +21,7 @@ public class Radio {
 
     public void changeTheStationByPrevButton() {
         if (currentRadioStation == minRadioStation) {
-            currentRadioStation = 9;
+            currentRadioStation = maxRadioStation;
 
         } else {
             currentRadioStation -= 1;
@@ -37,20 +30,25 @@ public class Radio {
 
     }
 
-    public void IncreaseVolume() {
-        if (currentVolume == maxVolume) {
-            currentVolume = 0;
+    public void increaseVolume() {
+        if (currentVolume >= maxVolume) {
+            currentVolume = maxVolume;
+            return;
+        } else {
+            currentVolume++;
+            return;
         }
-
-        currentVolume++;
     }
+
 
     public void decreaseVolume() {
         if (currentVolume <= minVolume) {
-            currentVolume = 0;
+            currentVolume = minVolume;
+            return;
 
         } else {
-            currentVolume -= 1;
+            currentVolume--;
+            return;
 
         }
     }

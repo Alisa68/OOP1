@@ -10,9 +10,9 @@ class RadioTest {
     @Test
     void shouldSetNumberRadiostationChanging() {
         Radio rad = new Radio();
-        rad.setNumberRadiostationChaning(12);
+        rad.setCurrentRadioStation(5);
         int actual = rad.getCurrentRadioStation();
-        assertEquals(0, actual);
+        assertEquals(5, actual);
     }
 
     @Test
@@ -59,41 +59,41 @@ class RadioTest {
     @Test
     void shouldIincreaseTheVolumeByOneStep() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(10);
-        rad.IncreaseVolume();
-        assertEquals(1, rad.getCurrentVolume());
+        rad.setCurrentVolume(5);
+        rad.increaseVolume();
+        assertEquals(6, rad.getCurrentVolume());
     }
 
     @Test
     void shouldIncreaseTheMaximumVolumeValue() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(10);
-        shouldReduceTheVolumeByOneStep();
+        rad.setCurrentVolume(11);
+        rad.increaseVolume();
         assertEquals(10, rad.getCurrentVolume());
     }
 
     @Test
     void shouldReduceTheVolumeByOneStep() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(5);
+        rad.setCurrentVolume(0);
         rad.decreaseVolume();
-        assertEquals(4, rad.getCurrentVolume());
+        assertEquals(0, rad.getCurrentVolume());
     }
 
 
     @Test
     void shouldReduceTheMinimumVolumeValue() {
         Radio rad = new Radio();
-        rad.setCurrentVolume(0);
+        rad.setCurrentVolume(5);
         rad.decreaseVolume();
-        assertEquals(0, rad.getCurrentVolume());
+        assertEquals(4, rad.getCurrentVolume());
     }
 
     @Test
     void shouldSetTheRadioChannelToIndicateItsNumber() {
         Radio rad = new Radio();
-        rad.setNumberRadiostationChaning(1);
-        assertEquals(1, rad.getCurrentRadioStation());
+        rad.setCurrentRadioStation(5);
+        assertEquals(5, rad.getCurrentRadioStation());
 
     }
 }
